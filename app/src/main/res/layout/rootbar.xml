@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/titlebar_height"
+    android:background="@color/colorPrimary"
+    android:layout_alignParentBottom="true"
+    android:paddingTop="10px"
+    android:orientation="horizontal">
+    <TextView
+        android:layout_weight="1"
+        android:id="@+id/btn_rootbar_mission"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/titlebar_height"
+        android:drawableTop="@mipmap/ic_launcher"
+        android:maxHeight="@dimen/titlebar_height"
+        android:gravity="center_horizontal"
+        android:text="@string/rootbar_mission"/>
+    <TextView
+        android:layout_weight="1"
+        android:id="@+id/btn_rootbar_my"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/titlebar_height"
+        android:drawableTop="@mipmap/ic_launcher"
+        android:maxHeight="@dimen/titlebar_height"
+        android:gravity="center_horizontal"
+        android:text="@string/rootbar_my" />
+
+</LinearLayout>

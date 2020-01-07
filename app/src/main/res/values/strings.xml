@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">MVPDemo</string>
+    <string name="login">登录</string>
+    <string name="login_btn">登录</string>
+    <string name="my">个人中心</string>
+    <string name="login_title">CH录入平台只提供内部会员</string>
+
+    <string name="rootbar_mission">任务</string>
+    <string name="rootbar_my">我的</string>
+
+
+</resources>
