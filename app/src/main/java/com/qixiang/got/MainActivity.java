@@ -8,23 +8,25 @@ import androidx.viewpager.widget.ViewPager;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RadioButton;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.TextView;
 
-import com.qixiang.got.Fragment.MainFragment;
-import com.qixiang.got.Utils.DeviceInfoUtils;
+import com.qixiang.got.ViewAdapter.MyViewPager;
+import com.qixiang.got.fragment.CodingDetailFragment;
+import com.qixiang.got.fragment.LanguageListFragment;
+import com.qixiang.got.fragment.MainFragment;
+import com.qixiang.got.ViewAdapter.ViewPagerFragmentAdapter;
+import com.qixiang.got.fragment.MyFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     FragmentManager mFragmentManager;
     List<Fragment> mFragmentList = new ArrayList<Fragment>();
-    ViewPager mViewpager;
+    MyViewPager mViewpager;
     ViewPagerFragmentAdapter mViewPagerFragmentAdapter;
 
     private TextView tvMission,tvMy;
@@ -32,17 +34,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         initView();
     }
 
     private void initView(){
+        findViewById(R.id.btn_rootbar_mission).setOnClickListener(this);
+        findViewById(R.id.btn_rootbar_my).setOnClickListener(this);
+
         tvMission = (TextView)findViewById(R.id.btn_rootbar_mission);
         tvMy = (TextView) findViewById(R.id.btn_rootbar_my);
-//        Drawable drawableMy = getResources().getDrawable(R.drawable.ic_launcher_background);
-//        drawableMy.setBounds(10,10,10,10);
-//        tvMy.setCompoundDrawables(null,drawableMy,null,null);
-
         TextView[] rb = new TextView[2];
         rb[0] = tvMission;
         rb[1] = tvMy;
@@ -54,17 +54,28 @@ public class MainActivity extends AppCompatActivity {
         }
 
         mFragmentManager = getSupportFragmentManager();
-        MainFragment ss = new MainFragment();
-
+        mViewpager = (MyViewPager) findViewById(R.id.ViewPagerLayout);
+        MainFragment ss = new MainFragment(mViewpager);
         mFragmentList.add(ss);
+        MyFragment mm = new MyFragment();
+        mFragmentList.add(mm);
+        LanguageListFragment lf = new LanguageListFragment(mViewpager);
+        mFragmentList.add(lf);
+        CodingDetailFragment cf = new CodingDetailFragment(mViewpager);
+        mFragmentList.add(cf);
+
         mViewPagerFragmentAdapter =   new ViewPagerFragmentAdapter(mFragmentManager,mFragmentList);
-        mViewpager = (ViewPager) findViewById(R.id.ViewPagerLayout);
-
-//        LinearLayout.LayoutParams ll = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,DeviceInfoUtils.getDeviceInfo().getScreenHeight()-860);
-//        mViewpager.setLayoutParams(ll);
-
+        mViewpager.setScrollable(false);
         //mViewpager.addOnPageChangeListener(new ViewPagerOnPagerChangedLisenter());
         mViewpager.setAdapter(mViewPagerFragmentAdapter);
         mViewpager.setCurrentItem(0);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btn_rootbar_mission: mViewpager.setCurrentItem(0);break;
+            case R.id.btn_rootbar_my:mViewpager.setCurrentItem(1); break;
+        }
     }
 }

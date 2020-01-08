@@ -1,4 +1,4 @@
-package com.qixiang.got;
+package com.qixiang.got.ViewAdapter;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;

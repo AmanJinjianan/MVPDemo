@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="titlebar_height">180px</dimen>
+
+    <dimen name="myfragmentsolid">12px</dimen>
+
+    <dimen name="myfragmentitemheight1">100dp</dimen>
+    <dimen name="myfragmentitemheight2">60dp</dimen>
+
+    <dimen name="myfragmentitemheight_list">80dp</dimen>
+
+    <dimen name="codingdetailbuttonlist">50dp</dimen>
+
 </resources>

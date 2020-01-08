@@ -3,7 +3,7 @@ package com.qixiang.got;
 import android.app.Application;
 import android.content.Context;
 
-import com.qixiang.got.Utils.DeviceInfoUtils;
+import com.qixiang.got.utils.DeviceInfoUtils;
 
 /**
  * 自定的Application
@@ -19,7 +19,7 @@ public class MyApplication extends Application {
         super.onCreate();
         context = this;
 
-        DeviceInfoUtils.init(this);
+        //DeviceInfoUtils.init(this);
     }
 
     public static Context getContext() {

@@ -7,6 +7,20 @@
 
     <string name="rootbar_mission">任务</string>
     <string name="rootbar_my">我的</string>
+    <string name="title_count">[CH账号]</string>
 
+    <string name="account">持有金额 （元）</string>
+    <string name="account_remain">待审核余额 （元）</string>
+
+    <string name="title_mission">任务</string>
+
+    <string name="my_warning">CH录入平台不会以任何名义收取费用，谨防上当受骗</string>
+
+    <string name="coding_commit">提交</string>
+    <string name="coding_line_feed">换行</string>
+    <string name="coding_easy">简>繁</string>
+    <string name="coding_btn_special_char">特殊字符</string>
+
+    <string name="coding_price_warn">[ 单价 ] 本条任务录入正确可获 0.0009 元</string>
 
 </resources>

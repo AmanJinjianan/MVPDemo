@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="10dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_codingtitle"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:gravity="center"
+                android:text="@string/title_mission"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/myfragmentsolid"
+                android:background="@color/colormysolid" />
+            <TextView
+                android:id="@+id/tv_codingcontent"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:gravity="center"
+                android:background="@color/codingdetail"
+                android:text="马奥秘人"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/code_bg_edittext_config"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/codingdetailbuttonlist"
+                android:padding="10dp"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/btn_special_char"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/coding_btn_special_char"
+                    android:background="@drawable/code_bg_commit_btn_config" />
+                <Button
+                    android:id="@+id/btn_easy_diff"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/coding_easy"
+                    android:background="@drawable/code_bg_edittext_config" />
+                <Button
+                    android:id="@+id/btn_line_feed"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/coding_line_feed"
+                    android:background="@drawable/code_bg_edittext_config" />
+                <Button
+                    android:id="@+id/btn_code_commit"
+                    android:layout_weight="3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/coding_commit"
+                    android:background="@drawable/code_bg_edittext_config" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/myfragmentsolid"
+                android:background="@color/colormysolid" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text="@string/coding_price_warn"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

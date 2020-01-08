@@ -41,7 +41,7 @@
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:background="@drawable/ic_launcher_background"
+                android:background="@drawable/em_icon_wenhao"
                 android:text="name"/>
             <EditText
                 android:id="@+id/et_nickname"
@@ -65,7 +65,7 @@
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:background="@drawable/ic_launcher_background"
+                android:background="@drawable/em_icon_wenhao"
                 android:text="name"/>
             <EditText
                 android:id="@+id/et_nickname3"

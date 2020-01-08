@@ -1,4 +1,4 @@
-package com.qixiang.got.ViewAdapter;
+package com.qixiang.got.model;
 
 /**
  * created by jinjianan

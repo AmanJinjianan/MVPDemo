@@ -1,4 +1,4 @@
-package com.qixiang.got.Utils;
+package com.qixiang.got.utils;
 
 import android.Manifest;
 import android.content.Context;

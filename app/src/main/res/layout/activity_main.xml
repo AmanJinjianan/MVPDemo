@@ -8,7 +8,7 @@
     <include layout="@layout/title"/>
     <include layout="@layout/rootbar"/>
 
-    <androidx.viewpager.widget.ViewPager
+    <com.qixiang.got.ViewAdapter.MyViewPager
         android:id="@+id/ViewPagerLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
