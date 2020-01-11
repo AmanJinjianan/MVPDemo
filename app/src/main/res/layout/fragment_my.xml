@@ -30,6 +30,7 @@
                     android:gravity="center_vertical"
                     android:text="@string/title_count" />
                 <TextView
+                    android:id="@+id/tv_my_account"
                     android:layout_width="150dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
@@ -69,6 +70,7 @@
                     android:layout_weight="1"
                     android:orientation="vertical">
                     <TextView
+                        android:id="@+id/tv_account"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:gravity="center"
@@ -85,6 +87,7 @@
                     android:layout_weight="1"
                     android:orientation="vertical">
                     <TextView
+                        android:id="@+id/tv_account_remain"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:gravity="center"
@@ -116,17 +119,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/myfragmentsolid"
                 android:background="@color/colormysolid" />
-            <LinearLayout
+            <ListView
+                android:id="@+id/lv_order"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <include android:id="@+id/first" layout="@layout/myfragmentdetalitem"/>
-                <include android:id="@+id/second" layout="@layout/myfragmentdetalitem"/>
-                <include android:id="@+id/third" layout="@layout/myfragmentdetalitem"/>
-                <include android:id="@+id/first1" layout="@layout/myfragmentdetalitem"/>
-                <include android:id="@+id/second1" layout="@layout/myfragmentdetalitem"/>
-                <include android:id="@+id/third1" layout="@layout/myfragmentdetalitem"/>
-            </LinearLayout>
+                android:layout_height="wrap_content">
+
+            </ListView>
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical">-->
+<!--                <include android:id="@+id/first" layout="@layout/myfragmentdetalitem"/>-->
+<!--                <include android:id="@+id/second" layout="@layout/myfragmentdetalitem"/>-->
+<!--                <include android:id="@+id/third" layout="@layout/myfragmentdetalitem"/>-->
+<!--                <include android:id="@+id/first1" layout="@layout/myfragmentdetalitem"/>-->
+<!--                <include android:id="@+id/second1" layout="@layout/myfragmentdetalitem"/>-->
+<!--                <include android:id="@+id/third1" layout="@layout/myfragmentdetalitem"/>-->
+<!--            </LinearLayout>-->
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

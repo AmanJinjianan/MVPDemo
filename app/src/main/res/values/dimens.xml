@@ -3,6 +3,7 @@
     <dimen name="titlebar_height">180px</dimen>
 
     <dimen name="myfragmentsolid">12px</dimen>
+    <dimen name="myitemheight">2px</dimen>
 
     <dimen name="myfragmentitemheight1">100dp</dimen>
     <dimen name="myfragmentitemheight2">60dp</dimen>

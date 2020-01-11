@@ -3,10 +3,19 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="colorLoginTitle">#F9F2F4</color>
+
+    <color name="color_getcash">#FDEDD0</color>
 
     <color name="codingdetail">#E4E1DA</color>
 
     <color name="app_title">#808080</color>
     <color name="app_root">#E6E6E6</color>
     <color name="colormysolid">#EFEFEF</color>
+
+    <color name="color_gomission">#D66754</color>
+
+    <color name="color_btn_confirm">#FF9640</color>
+
+
 </resources>

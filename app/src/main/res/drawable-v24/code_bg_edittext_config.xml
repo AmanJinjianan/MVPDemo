@@ -4,7 +4,7 @@
     tools:ignore="ResourceName">
 
     <stroke
-        android:width="2dp"
+        android:width="1px"
         android:color="#000" />
 <!--    <padding-->
 <!--        android:left="10dp"-->

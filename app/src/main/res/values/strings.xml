@@ -23,4 +23,23 @@
 
     <string name="coding_price_warn">[ 单价 ] 本条任务录入正确可获 0.0009 元</string>
 
+    <string name="warn_login">登录信息错误</string>
+
+    <string name="mission_go_mission">去做任务</string>
+    <string name="mission_go">刷视频</string>
+    <string name="cashout">余额提现</string>
+
+    <string name="remaincash">可提现金额</string>
+    <string name="remaincash_title">提现金额</string>
+    <string name="pre_getcash">累计一元即可提现</string>
+
+    <string name="btn_getcash">确定提现</string>
+    <string name="tip_getcash">首次提现请看下方注意事项</string>
+    <string name="tipdetail_getcash"><B>关于提现</B>\n
+1. 提现次日开始七天内提现到账（周末、节假日除外）；\n
+2. 最低提现1元，提现金额必须大于1元；\n
+3. 特殊情况（法定节假日等），到账以官网公告为准；\n
+4. 现仅限微信付款码提现，不支持其他方式；</string>
+
+    <string name="hint_getcash">输入您要提现的金额</string>
 </resources>

@@ -3,20 +3,22 @@ package com.qixiang.got;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.viewpager.widget.ViewPager;
 
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
 import com.qixiang.got.ViewAdapter.MyViewPager;
+import com.qixiang.got.fragment.CashOutFragment;
 import com.qixiang.got.fragment.CodingDetailFragment;
+import com.qixiang.got.fragment.CodingDetailFragment2;
+import com.qixiang.got.fragment.EmptyFragment;
 import com.qixiang.got.fragment.LanguageListFragment;
 import com.qixiang.got.fragment.MainFragment;
 import com.qixiang.got.ViewAdapter.ViewPagerFragmentAdapter;
+import com.qixiang.got.fragment.MultipleMissionlFragment;
 import com.qixiang.got.fragment.MyFragment;
 
 import java.util.ArrayList;
@@ -54,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         mFragmentManager = getSupportFragmentManager();
+
         mViewpager = (MyViewPager) findViewById(R.id.ViewPagerLayout);
         MainFragment ss = new MainFragment(mViewpager);
         mFragmentList.add(ss);
@@ -63,6 +66,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mFragmentList.add(lf);
         CodingDetailFragment cf = new CodingDetailFragment(mViewpager);
         mFragmentList.add(cf);
+        CodingDetailFragment2 cf2 = new CodingDetailFragment2(mViewpager);
+        mFragmentList.add(cf2);
+        MultipleMissionlFragment mmf = new MultipleMissionlFragment(mViewpager);
+        mFragmentList.add(mmf);
+        EmptyFragment ef = new EmptyFragment(mViewpager);
+        mFragmentList.add(ef);
+        CashOutFragment cof = new CashOutFragment();
+        mFragmentList.add(cof);
 
         mViewPagerFragmentAdapter =   new ViewPagerFragmentAdapter(mFragmentManager,mFragmentList);
         mViewpager.setScrollable(false);
