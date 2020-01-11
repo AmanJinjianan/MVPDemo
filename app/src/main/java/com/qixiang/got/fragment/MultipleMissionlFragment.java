@@ -85,19 +85,21 @@ public class MultipleMissionlFragment extends Fragment {
 
         //模拟列表数据
         List newsList = new ArrayList<>();
-        MultipleMissionInfo news;
-        for (int i = 1; i < 10; i++) {
-            news = new MultipleMissionInfo();
-            news.title = "微赚";
-            news.state = 0 ;
-            newsList.add(news);
-        }
+        newsList.add(new MultipleMissionInfo("微赚"));
+        newsList.add(new MultipleMissionInfo("聊天"));
+        newsList.add(new MultipleMissionInfo("刷视频"));
+        newsList.add(new MultipleMissionInfo("看小说"));
+        newsList.add(new MultipleMissionInfo("看文章"));
+        newsList.add(new MultipleMissionInfo("投票"));
+        newsList.add(new MultipleMissionInfo("批改作业"));
+        newsList.add(new MultipleMissionInfo("CH 佣金系统"));
+
         //设置适配器
         MultipleMissionAdapter newsAdapter = new MultipleMissionAdapter(newsList,context1);
         newsAdapter.setOnItemClick(new MultipleMissionAdapter.OnItemClickListerner() {
             @Override
             public void onItemClick(int position) {
-                Toast.makeText(getContext(), "positionMission:"+position, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "未开发"+position, Toast.LENGTH_SHORT).show();
                 if(myViewPager != null){
                     switch (position){
 //                        case 0:

@@ -5,6 +5,10 @@ package com.qixiang.got.model;
  * on
  */
 public class MultipleMissionInfo {
+
+    public MultipleMissionInfo(String s){
+        this.title = s;
+    }
     public String getTitle() {
         return title;
     }

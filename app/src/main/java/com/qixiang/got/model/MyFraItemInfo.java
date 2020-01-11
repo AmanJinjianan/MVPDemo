@@ -5,6 +5,11 @@ package com.qixiang.got.model;
  * on
  */
 public class MyFraItemInfo {
+    public String title;
+
+    public MyFraItemInfo(String title){
+        this.title = title;
+    }
     public String getTitle() {
         return title;
     }
@@ -13,6 +18,5 @@ public class MyFraItemInfo {
         this.title = title;
     }
 
-    public String title;
 
 }

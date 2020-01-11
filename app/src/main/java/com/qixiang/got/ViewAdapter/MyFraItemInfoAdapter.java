@@ -1,5 +1,7 @@
 package com.qixiang.got.ViewAdapter;
 
+import android.app.Activity;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,8 +21,10 @@ import java.util.List;
 public class MyFraItemInfoAdapter extends BaseAdapter {
     private List<MyFraItemInfo> data;
 
-    public MyFraItemInfoAdapter(List<MyFraItemInfo>data){
+    private Activity context;
+    public MyFraItemInfoAdapter(List<MyFraItemInfo>data,Activity con){
         this.data=data;
+        this.context = con;
     }
 
     //说明listview有多少个条目
@@ -48,13 +52,14 @@ public class MyFraItemInfoAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         MyFraItemInfo MyFraItemInfo=data.get(position);
-        if(convertView==null){
-            LayoutInflater inflater=LayoutInflater.from(MainActivity.this);
+        if(convertView == null){
+            LayoutInflater inflater=LayoutInflater.from(context);
             convertView=inflater.inflate(R.layout.myfragmentdetalitem, null);
         }
-        TextView tvName=(TextView) findViewById(R.id.tv_name);
+        TextView tvName=(TextView) convertView.findViewById(R.id.tv_myframitem);
         //设置数据
-        tvName.setText(MyFraItemInfo.getName());
+        if(tvName != null)
+            tvName.setText(MyFraItemInfo.getTitle());
 
         return convertView;
     }

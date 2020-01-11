@@ -58,9 +58,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mFragmentManager = getSupportFragmentManager();
 
         mViewpager = (MyViewPager) findViewById(R.id.ViewPagerLayout);
+        mViewpager = (MyViewPager) findViewById(R.id.ViewPagerLayout);
+
         MainFragment ss = new MainFragment(mViewpager);
         mFragmentList.add(ss);
-        MyFragment mm = new MyFragment();
+        MyFragment mm = new MyFragment(mViewpager);
         mFragmentList.add(mm);
         LanguageListFragment lf = new LanguageListFragment(mViewpager);
         mFragmentList.add(lf);
@@ -70,10 +72,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mFragmentList.add(cf2);
         MultipleMissionlFragment mmf = new MultipleMissionlFragment(mViewpager);
         mFragmentList.add(mmf);
-        EmptyFragment ef = new EmptyFragment(mViewpager);
-        mFragmentList.add(ef);
         CashOutFragment cof = new CashOutFragment();
         mFragmentList.add(cof);
+        EmptyFragment ef = new EmptyFragment(mViewpager);
+        mFragmentList.add(ef);
 
         mViewPagerFragmentAdapter =   new ViewPagerFragmentAdapter(mFragmentManager,mFragmentList);
         mViewpager.setScrollable(false);

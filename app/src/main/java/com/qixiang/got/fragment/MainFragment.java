@@ -119,7 +119,7 @@ public class MainFragment extends Fragment {
             @Override
             public void onItemClick(View v, int position) {
                 myViewPager.requestFocus();
-                Toast.makeText(getContext(), "position555:" + myViewPager.getChildCount(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), "position555:" + myViewPager.getChildCount(), Toast.LENGTH_SHORT).show();
                 if (myViewPager != null) {
                     switch (position) {
                         case 0:
@@ -128,8 +128,11 @@ public class MainFragment extends Fragment {
                         case 1:
                             myViewPager.setCurrentItem(4);
                             break;
-                        case 2:
+                        case 3:
                             myViewPager.setCurrentItem(5);
+                            break;
+                        default:
+                            myViewPager.setCurrentItem(50);
                             break;
                     }
                 }

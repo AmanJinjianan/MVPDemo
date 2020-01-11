@@ -3,12 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/titlebar_height"
     android:background="@color/app_title">
-    <Button
+    <ImageView
         android:id="@+id/title_left"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/titlebar_height"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_margin="5dp"
-        android:text="Back" />
+        android:background="@mipmap/ic_launcher" />
     <TextView
         android:id="@+id/title_text"
         android:layout_width="0dp"
@@ -22,7 +22,8 @@
     <TextView
         android:id="@+id/title_right"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/titlebar_height"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
         android:text="@string/my"
         android:layout_margin="5dp" />
 

@@ -8,13 +8,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.qixiang.got.R;
+import com.qixiang.got.ViewAdapter.MyFraItemAdapter;
+import com.qixiang.got.ViewAdapter.MyViewPager;
 import com.qixiang.got.constant.ConstantData;
 import com.qixiang.got.contract.MyContract;
 import com.qixiang.got.model.MyFraItemInfo;
@@ -42,6 +48,10 @@ public class MyFragment extends Fragment implements MyContract.View {
 
     private MyPresenter mt;
     public TextView tvAccount,tvAccountValue,tvAccountRemain;
+    private MyViewPager myViewPager;
+    public MyFragment(MyViewPager mp){
+        myViewPager = mp;
+    }
     public void setTheHandler(Handler handler){
         theHandler = handler;
     }
@@ -69,18 +79,60 @@ public class MyFragment extends Fragment implements MyContract.View {
         tvAccount.setText(ConstantData.userAccount);
 
 
+        //LinearLayoutManager是用来做列表布局，也就是单列的列表
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context1);
+        RecyclerView rv = context1.findViewById(R.id.rv_my_fra_item);
+        rv.setLayoutManager(layoutManager);
+        //默认就是垂直方向的
+        ((LinearLayoutManager) layoutManager).setOrientation(RecyclerView.VERTICAL);
+        //谷歌提供了一个默认的item删除添加的动画
+        rv.setItemAnimator(new DefaultItemAnimator());
 
-        ListView lv=(ListView)context1.findViewById(R.id.lv_order);
-        List<MyFraItemInfo> data=new ArrayList<MyFraItemInfo>();
-        data.add(new MyFraItemInfo(R.drawable.img, "张三1", "18812345678", 3, "18:20", ""));
+        //谷歌提供了一个DividerItemDecoration的实现类来实现分割线
+        //往往我们需要自定义分割线的效果，需要自己实现ItemDecoration接口
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(context1, DividerItemDecoration.VERTICAL);
+        rv.addItemDecoration(dividerItemDecoration);
 
-        OrderAdapter adapter2=new OrderAdapter(data);
-        lv.setAdapter(adapter2);
+        //当item改变不会重新计算item的宽高
+        //调用adapter的增删改差方法的时候就不会重新计算，但是调用nofityDataSetChange的时候还是会
+        //所以往往是直接先设置这个为true，当需要布局重新计算宽高的时候才调用nofityDataSetChange
+        rv.setHasFixedSize(true);
+        //模拟列表数据
+        List newsList = new ArrayList<>();
+        MyFraItemInfo news1 = new MyFraItemInfo("官方公告");
+        newsList.add(news1);
+        MyFraItemInfo news2 = new MyFraItemInfo("我的分享任务");
+        newsList.add(news2);
+        MyFraItemInfo news3 = new MyFraItemInfo("我的打字任务");
+        newsList.add(news3);
+        MyFraItemInfo news4 = new MyFraItemInfo("余额提现");
+        newsList.add(news4);
+        MyFraItemInfo news5 = new MyFraItemInfo("微信收款码");
+        newsList.add(news5);
+        MyFraItemInfo news6 = new MyFraItemInfo("提现记录");
+        newsList.add(news6);
+        MyFraItemInfo news7 = new MyFraItemInfo("退出登录");
+        newsList.add(news7);
+
+        //设置适配器
+        MyFraItemAdapter newsAdapter = new MyFraItemAdapter(newsList, context1);
+        newsAdapter.setOnItemClick(new MyFraItemAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+                //int kk  = 00;
+                switch (position){
+                    case 3:myViewPager.setCurrentItem(6);break;
+                    default:myViewPager.setCurrentItem(50);break;
+                }
+                //Toast.makeText(getContext(), "position555:" + myViewPager.getChildCount(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        rv.setAdapter(newsAdapter);
+
 
         mt = new MyPresenter(this);
         mt.getMsg();
     }
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

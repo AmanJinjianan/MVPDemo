@@ -89,7 +89,7 @@ public class LanguageListFragment extends Fragment {
         newsAdapter.setOnItemClick(new LanguageAdapter.OnItemClickListerner() {
             @Override
             public void OnItemClick(int position) {
-                Toast.makeText(getContext(), "position:7777"+position, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), "position:7777"+position, Toast.LENGTH_SHORT).show();
                 if(myViewPager != null){
                     switch (position){
                         case 0:myViewPager.setCurrentItem(3);break;
