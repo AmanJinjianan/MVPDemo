@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -59,6 +60,7 @@ public class MyFraItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         ((MyFraViewHolder) holder).title.setText(list.get(position).title);
+        ((MyFraViewHolder) holder).source.setBackground(context.getResources().getDrawable(list.get(position).getIcID()));
         ((MyFraViewHolder) holder).itemView.setTag(position);
     }
 
@@ -70,10 +72,13 @@ public class MyFraItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 }
 
 class MyFraViewHolder extends RecyclerView.ViewHolder {
-    public TextView title, time, source;
+    public TextView title, time ;
+    public ImageView source;
 
     public MyFraViewHolder(View itemView) {
         super(itemView);
         title = itemView.findViewById(R.id.tv_myframitem);
+        source = itemView.findViewById(R.id.title_left);
+
     }
 }

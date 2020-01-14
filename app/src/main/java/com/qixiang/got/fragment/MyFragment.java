@@ -1,6 +1,7 @@
 package com.qixiang.got.fragment;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -18,6 +19,9 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.qixiang.got.CashOurHistoryActivity;
+import com.qixiang.got.LoginActivity;
+import com.qixiang.got.MainActivity;
 import com.qixiang.got.R;
 import com.qixiang.got.ViewAdapter.MyFraItemAdapter;
 import com.qixiang.got.ViewAdapter.MyViewPager;
@@ -26,6 +30,7 @@ import com.qixiang.got.contract.MyContract;
 import com.qixiang.got.model.MyFraItemInfo;
 import com.qixiang.got.presenter.MyPresenter;
 import com.qixiang.got.utils.ToastUtil;
+import com.qixiang.got.utils.httputils.module.Constant;
 
 import org.json.JSONObject;
 
@@ -41,26 +46,27 @@ import java.util.List;
 public class MyFragment extends Fragment implements MyContract.View {
     View mView;
 
-    private HorizontalScrollView horizontalScrollView;
-    public LinearLayout container;
     public Activity context1;
     public Handler theHandler;
 
     private MyPresenter mt;
-    public TextView tvAccount,tvAccountValue,tvAccountRemain;
+    public TextView tvAccount, tvAccountValue, tvAccountRemain;
     private MyViewPager myViewPager;
-    public MyFragment(MyViewPager mp){
+
+    public MyFragment(MyViewPager mp) {
         myViewPager = mp;
     }
-    public void setTheHandler(Handler handler){
+
+    public void setTheHandler(Handler handler) {
         theHandler = handler;
     }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
-        if(mView == null){
-            mView = inflater.inflate(R.layout.fragment_my,null);
+        if (mView == null) {
+            mView = inflater.inflate(R.layout.fragment_my, null);
         }
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -99,19 +105,19 @@ public class MyFragment extends Fragment implements MyContract.View {
         rv.setHasFixedSize(true);
         //模拟列表数据
         List newsList = new ArrayList<>();
-        MyFraItemInfo news1 = new MyFraItemInfo("官方公告");
+        MyFraItemInfo news1 = new MyFraItemInfo("官方公告", R.drawable.ic_advting);
         newsList.add(news1);
-        MyFraItemInfo news2 = new MyFraItemInfo("我的分享任务");
+        MyFraItemInfo news2 = new MyFraItemInfo("我的分享任务", R.drawable.ic_advting);
         newsList.add(news2);
-        MyFraItemInfo news3 = new MyFraItemInfo("我的打字任务");
+        MyFraItemInfo news3 = new MyFraItemInfo("我的打字任务", R.drawable.ic_advting);
         newsList.add(news3);
-        MyFraItemInfo news4 = new MyFraItemInfo("余额提现");
+        MyFraItemInfo news4 = new MyFraItemInfo("余额提现", R.drawable.ic_advting);
         newsList.add(news4);
-        MyFraItemInfo news5 = new MyFraItemInfo("微信收款码");
+        MyFraItemInfo news5 = new MyFraItemInfo("微信收款码", R.drawable.ic_advting);
         newsList.add(news5);
-        MyFraItemInfo news6 = new MyFraItemInfo("提现记录");
+        MyFraItemInfo news6 = new MyFraItemInfo("提现记录", R.drawable.ic_cashout);
         newsList.add(news6);
-        MyFraItemInfo news7 = new MyFraItemInfo("退出登录");
+        MyFraItemInfo news7 = new MyFraItemInfo("退出登录", R.drawable.ic_logout);
         newsList.add(news7);
 
         //设置适配器
@@ -120,19 +126,35 @@ public class MyFragment extends Fragment implements MyContract.View {
             @Override
             public void onItemClick(View v, int position) {
                 //int kk  = 00;
-                switch (position){
-                    case 3:myViewPager.setCurrentItem(6);break;
-                    default:myViewPager.setCurrentItem(50);break;
+                switch (position) {
+                    case 3:
+                        myViewPager.setCurrentItem(6);
+                        break;
+                    case 4:
+                        myViewPager.setCurrentItem(7);
+                        break;
+                    case 5:
+                        Intent intent1 = new Intent(getActivity(), CashOurHistoryActivity.class);
+                        startActivity(intent1);
+                        break;
+                    case 6:
+                        Intent intent = new Intent(getActivity(), LoginActivity.class);
+                        startActivity(intent);
+                        getActivity().finish();
+                        break;
+                    default:
+                        myViewPager.setCurrentItem(50);
+                        break;
                 }
                 //Toast.makeText(getContext(), "position555:" + myViewPager.getChildCount(), Toast.LENGTH_SHORT).show();
             }
         });
         rv.setAdapter(newsAdapter);
 
-
         mt = new MyPresenter(this);
         mt.getMsg();
     }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -146,37 +168,49 @@ public class MyFragment extends Fragment implements MyContract.View {
     }
 
     private ArrayList<String> data = new ArrayList<>();
+
     @Override
     public void onResume() {
         //避免重复添加item
         super.onResume();
-        if(mt != null){
+        if (mt != null) {
             mt.getMsg();
         }
     }
 
+    JSONObject jb;
+
     @Override
-    public void sendToMain(JSONObject jb) {
-        try {
-            int rtnCode = jb.getInt("rtnCode");
-            String data = jb.getString("data");
-            JSONObject jsbData = new JSONObject(data);
-            data = jsbData.getString("bean");
-            jsbData = new JSONObject(data);
-            if (ConstantData.rtnCodeOK == rtnCode){
-                if(tvAccount != null){
-                    tvAccountValue.setText(jsbData.getString("holdBalance"));
+    public void sendToMain(JSONObject jb1) {
+        jb = jb1;
+        context1.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    int rtnCode = jb.getInt("rtnCode");
+
+                    if (ConstantData.rtnCodeOK == rtnCode) {
+                        String data = jb.getString("data");
+                        JSONObject jsbData = new JSONObject(data);
+                        data = jsbData.getString("bean");
+                        jsbData = new JSONObject(data);
+                        if (tvAccount != null) {
+                            tvAccountValue.setText(jsbData.getString("holdBalance"));
+                            ConstantData.userAccountMoney = jsbData.getString("holdBalance");
+                        }
+                        if (tvAccountRemain != null) {
+                            tvAccountRemain.setText(jsbData.getString("auditBalance"));
+                        }
+                        //tvAccountValue.setText();
+                    } else {
+                        ToastUtil.showMessage("" + jb.getString("rtnMsg"));
+                    }
+                } catch (Exception e) {
+                    ToastUtil.showMessage("" + e.getMessage());
                 }
-                if(tvAccountRemain != null){
-                    tvAccountRemain.setText(jsbData.getString("auditBalance"));
-                }
-                //tvAccountValue.setText();
-            }else {
-                ToastUtil.showMessage(""+jb.getString("rtnMsg"));
             }
-        }catch (Exception e){
-            ToastUtil.showMessage(""+e.getMessage());
-        }
+        });
+
     }
 
     @Override

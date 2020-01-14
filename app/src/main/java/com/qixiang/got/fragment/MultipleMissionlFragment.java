@@ -92,7 +92,7 @@ public class MultipleMissionlFragment extends Fragment {
         newsList.add(new MultipleMissionInfo("看文章"));
         newsList.add(new MultipleMissionInfo("投票"));
         newsList.add(new MultipleMissionInfo("批改作业"));
-        newsList.add(new MultipleMissionInfo("CH 佣金系统"));
+        newsList.add(new MultipleMissionInfo("HH 佣金系统"));
 
         //设置适配器
         MultipleMissionAdapter newsAdapter = new MultipleMissionAdapter(newsList,context1);

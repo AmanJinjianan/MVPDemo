@@ -11,7 +11,7 @@
         android:id="@+id/btn_rootbar_mission"
         android:layout_width="0dp"
         android:layout_height="@dimen/titlebar_height"
-        android:drawableTop="@mipmap/ic_launcher"
+        android:drawableTop="@mipmap/ic_mission"
         android:maxHeight="@dimen/titlebar_height"
         android:gravity="center_horizontal"
         android:text="@string/rootbar_mission"/>
@@ -20,7 +20,7 @@
         android:id="@+id/btn_rootbar_my"
         android:layout_width="0dp"
         android:layout_height="@dimen/titlebar_height"
-        android:drawableTop="@mipmap/ic_launcher"
+        android:drawableTop="@mipmap/ic_my"
         android:maxHeight="@dimen/titlebar_height"
         android:gravity="center_horizontal"
         android:text="@string/rootbar_my" />

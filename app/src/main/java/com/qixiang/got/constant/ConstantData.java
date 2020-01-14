@@ -14,4 +14,7 @@ public class ConstantData {
 
     //用户名
     public static String userName = "";
+
+    //用户持有金额
+    public static String userAccountMoney = "";
 }

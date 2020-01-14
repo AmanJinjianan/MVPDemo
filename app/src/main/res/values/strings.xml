@@ -1,25 +1,32 @@
 <resources>
-    <string name="app_name">MVPDemo</string>
+    <string name="app_name">HH</string>
     <string name="login">登录</string>
+    <string name="register">注册</string>
+    <string name="register_phone">手机注册</string>
     <string name="login_btn">登录</string>
     <string name="my">个人中心</string>
-    <string name="login_title">CH录入平台只提供内部会员</string>
+    <string name="login_title">HH录入平台只提供内部会员</string>
+
+    <string name="tv_logo">HH录入平台</string>
 
     <string name="rootbar_mission">任务</string>
     <string name="rootbar_my">我的</string>
-    <string name="title_count">[CH账号]</string>
+    <string name="title_count">[HH账号]</string>
 
     <string name="account">持有金额 （元）</string>
     <string name="account_remain">待审核余额 （元）</string>
 
     <string name="title_mission">任务</string>
-
-    <string name="my_warning">CH录入平台不会以任何名义收取费用，谨防上当受骗</string>
+    <string name="register_commit">创建</string>
+    <string name="my_warning">HH录入平台不会以任何名义收取费用，谨防上当受骗</string>
 
     <string name="coding_commit">提交</string>
     <string name="coding_line_feed">换行</string>
     <string name="coding_easy">简>繁</string>
     <string name="coding_btn_special_char">特殊字符</string>
+
+    <string name="coding_next_mission">录入正确，点击获取下一任务</string>
+    <string name="coding_next_mission2">下一个任务</string>
 
     <string name="coding_price_warn">[ 单价 ] 本条任务录入正确可获 0.0009 元</string>
 
@@ -42,4 +49,21 @@
 4. 现仅限微信付款码提现，不支持其他方式；</string>
 
     <string name="hint_getcash">输入您要提现的金额</string>
+
+    <string name="tv_right_result">[正确结果]</string>
+    <string name="tv_your_result">[您的结果]</string>
+
+    <string name="tv_uploading">开始上传</string>
+
+    <string name="btn_image_pick">选择图片</string>
+    <string name="btn_start_uploading">点击按钮上传</string>
+
+    <string name="tv_cashout_value">金额</string>
+    <string name="tv_cashout_time">时间</string>
+    <string name="tv_cashout_state">状态</string>
+
+    <string name="tv_register_agree">我已仔细阅读并同意</string>
+    <string name="tv_register_profile">《HH录入平台用户协议》</string>
+
+    <string name="tv_register_gologin">手机账号登陆</string>
 </resources>

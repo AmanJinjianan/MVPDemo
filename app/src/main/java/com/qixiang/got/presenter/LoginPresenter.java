@@ -49,33 +49,4 @@ public class LoginPresenter implements LoginContract.Presenter {
         }).start();
     }
 
-
-    public void getRobotAnswer(String robotUrl) {
-        robotUrl = "http://112.126.60.140:8080/users/toLogin";
-        try {
-            JSONObject object = new JSONObject();
-            object.put("userName", "admin");
-            object.put("passWord", "123456");
-            String json = object.toString();
-            Log.d("CMEventUtil_appkey", json);
-            HttpUtils.build().url(robotUrl)
-                    .addParam("userName", "admin")
-                    .addParam("passWord", "123456")
-                    .onExecuteByPost(new CommCallback<String>() {
-                        @Override
-                        public void onSucceed(String result) {
-                            Log.d("CMEventUtil_result", result);
-
-                        }
-
-                        @Override
-                        public void onFailed(Throwable throwable) {
-                            Log.d("throwable", "throwable:" + throwable);
-                            throwable.printStackTrace();
-                        }
-                    });
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 }

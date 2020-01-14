@@ -18,6 +18,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:gravity="center"
+                android:textSize="@dimen/title_text_size"
                 android:text="@string/title_mission"/>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -30,12 +31,56 @@
                 android:gravity="center"
                 android:background="@color/codingdetail"
                 android:text="马奥秘人"/>
+            <LinearLayout
+                android:id="@+id/ll_coding_detail_result1"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp"
+                android:visibility="visible">
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/tv_right_result"/>
+                <TextView
+                    android:id="@+id/tv_coding_right_result"
+                    android:layout_weight="3"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:gravity="center_vertical"
+                    android:text="moren"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_coding_detail_result2"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp"
+                android:visibility="visible">
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/tv_your_result"/>
+                <TextView
+                    android:id="@+id/tv_coding_you_result"
+                    android:layout_weight="3"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:gravity="center_vertical"
+                    android:text="moren"/>
+            </LinearLayout>
             <EditText
+                android:id="@+id/et_coding_content"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/code_bg_edittext_config"/>
             <LinearLayout
+                android:id="@+id/ll_coding_three_btn"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/codingdetailbuttonlist"
                 android:paddingVertical="10dp"
@@ -73,13 +118,20 @@
                     android:text="@string/coding_commit"
                     android:background="@drawable/code_bg_commit_btn_config" />
             </LinearLayout>
-
+            <Button
+                android:id="@+id/btn_next_mission"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:text="@string/coding_next_mission"
+                android:background="@drawable/code_bg_edittext_config" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/myfragmentsolid"
                 android:background="@color/colormysolid" />
 
             <TextView
+                android:id="@+id/tv_per_money"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center"

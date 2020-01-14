@@ -5,33 +5,51 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".LoginActivity">
-    <include layout="@layout/title"/>
-    <RelativeLayout
-        android:layout_weight="1"
+
+    <include layout="@layout/title" />
+
+    <TextView
+        android:id="@+id/rv_btn_register"
         android:layout_width="match_parent"
-        android:layout_height="0dp">
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:paddingLeft="15dp"
+        android:visibility="gone"
+        android:gravity="center_vertical"
+        android:textColor="@color/color_white"
+        android:background="@color/color_menu"
+        android:text="@string/register" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:textSize="20sp"
-            android:text="@string/login" />
+            android:text="@string/login"
+            android:textSize="20sp" />
 
     </RelativeLayout>
 
 
     <LinearLayout
-        android:layout_weight="2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:paddingHorizontal="20dp"
-        android:orientation="vertical">
+        android:layout_weight="2"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:gravity="center"
             android:background="@color/colorLoginTitle"
-            android:text="@string/login_title"/>
+            android:gravity="center"
+            android:text="@string/login_title"
+            android:textColor="@color/color_login_center" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -42,20 +60,22 @@
             <ImageView
                 android:layout_width="45dp"
                 android:layout_height="45dp"
+                android:background="@drawable/ic_my"
                 android:gravity="center"
-                android:background="@drawable/em_icon_wenhao"
-                android:text="name"/>
+                android:text="name" />
+
             <EditText
                 android:id="@+id/et_userName"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="7dp"
-                android:gravity="center"
                 android:layout_gravity="center"
+                android:layout_marginLeft="7dp"
                 android:background="@drawable/cm_bg_edittext_config"
-                android:text="admin"
+                android:gravity="center"
+                android:text="jielun"
                 android:textSize="18sp" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -66,25 +86,27 @@
             <ImageView
                 android:layout_width="45dp"
                 android:layout_height="45dp"
+                android:background="@drawable/ic_my"
                 android:gravity="center"
-                android:background="@drawable/em_icon_wenhao"
-                android:text="name"/>
+                android:text="name" />
+
             <EditText
                 android:id="@+id/et_psd"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="7dp"
-                android:gravity="center"
                 android:layout_gravity="center"
+                android:layout_marginLeft="7dp"
                 android:background="@drawable/cm_bg_edittext_config"
+                android:gravity="center"
                 android:text="123456"
                 android:textSize="18sp" />
         </LinearLayout>
+
         <Button
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:text="@string/login_btn"/>
+            android:text="@string/login_btn" />
     </LinearLayout>
 
 </LinearLayout>

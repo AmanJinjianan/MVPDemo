@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.content.Intent;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -12,9 +13,11 @@ import android.widget.TextView;
 
 import com.qixiang.got.ViewAdapter.MyViewPager;
 import com.qixiang.got.fragment.CashOutFragment;
+import com.qixiang.got.fragment.CashOutHistoryFragment;
 import com.qixiang.got.fragment.CodingDetailFragment;
 import com.qixiang.got.fragment.CodingDetailFragment2;
 import com.qixiang.got.fragment.EmptyFragment;
+import com.qixiang.got.fragment.ImageUploadFragment;
 import com.qixiang.got.fragment.LanguageListFragment;
 import com.qixiang.got.fragment.MainFragment;
 import com.qixiang.got.ViewAdapter.ViewPagerFragmentAdapter;
@@ -58,7 +61,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mFragmentManager = getSupportFragmentManager();
 
         mViewpager = (MyViewPager) findViewById(R.id.ViewPagerLayout);
-        mViewpager = (MyViewPager) findViewById(R.id.ViewPagerLayout);
 
         MainFragment ss = new MainFragment(mViewpager);
         mFragmentList.add(ss);
@@ -74,8 +76,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mFragmentList.add(mmf);
         CashOutFragment cof = new CashOutFragment();
         mFragmentList.add(cof);
+        ImageUploadFragment ef22 = new ImageUploadFragment(mViewpager);
+        mFragmentList.add(ef22);
         EmptyFragment ef = new EmptyFragment(mViewpager);
         mFragmentList.add(ef);
+        CashOutHistoryFragment cohf = new CashOutHistoryFragment();
+        mFragmentList.add(cohf);
 
         mViewPagerFragmentAdapter =   new ViewPagerFragmentAdapter(mFragmentManager,mFragmentList);
         mViewpager.setScrollable(false);
@@ -88,7 +94,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_rootbar_mission: mViewpager.setCurrentItem(0);break;
-            case R.id.btn_rootbar_my:mViewpager.setCurrentItem(1); break;
+            case R.id.btn_rootbar_my:
+
+                mViewpager.setCurrentItem(1);
+                break;
         }
     }
 }
