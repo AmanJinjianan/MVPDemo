@@ -6,9 +6,11 @@ package com.qixiang.got.model;
  */
 public class MultipleMissionInfo {
 
-    public MultipleMissionInfo(String s){
-        this.title = s;
-    }
+    public String taskDesc;
+    public String title;
+    public int state;
+    private String rowId;
+
     public String getTitle() {
         return title;
     }
@@ -17,15 +19,28 @@ public class MultipleMissionInfo {
         this.title = title;
     }
 
-    public int getstate() {
+    public int getState() {
         return state;
     }
 
-    public void setstate(int state) {
+    public void setState(int state) {
         this.state = state;
     }
 
-    public String title;
-    public int state;
+    public String getTaskDesc() {
+        return taskDesc;
+    }
 
+    public void setTaskDesc(String taskDesc) {
+        this.taskDesc = taskDesc;
+    }
+
+
+
+    public MultipleMissionInfo(String rowId,String title, int state, String taskDesc) {
+        this.rowId = rowId;
+        this.title = title;
+        this.state = state;
+        this.taskDesc = taskDesc;
+    }
 }

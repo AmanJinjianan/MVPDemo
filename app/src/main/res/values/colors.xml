@@ -16,7 +16,8 @@
 
     <color name="btn_go_upload">#37C6C0</color>
     <color name="app_title">#808080</color>
-    <color name="app_root">#E6E6E6</color>
+<!--    <color name="app_root">#E6E6E6</color>-->
+    <color name="app_root">	#00FF7F</color>
     <color name="colormysolid">#EFEFEF</color>
 
     <color name="color_gomission">#D66754</color>

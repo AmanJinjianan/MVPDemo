@@ -37,7 +37,7 @@ public class LoginPresenter implements LoginContract.Presenter {
                     JSONObject object = new JSONObject();
                     object.put("userName", userName);
                     object.put("passWord", psd);
-                    JSONObject result = HttpUtils2.sendJsonPost("http://112.126.60.140:8080/users/toLogin", object);
+                    JSONObject result = HttpUtils2.sendJsonPost("http://112.126.60.140:6789/users/toLogin", object);
 
                     mView.showToast("LoginLogin");
                     mView.gotoMain(result);

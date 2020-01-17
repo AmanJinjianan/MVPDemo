@@ -36,7 +36,7 @@ public class MainPresenter implements MainContract.Presenter {
                     JSONObject object = new JSONObject();
                     object.put("userName", "admin");
                     object.put("passWord", "123456");
-                    JSONObject result = HttpUtils2.sendJsonPost("http://112.126.60.140:8080/users/toLogin", object);
+                    JSONObject result = HttpUtils2.sendJsonPost("http://112.126.60.140:6789/users/toLogin", object);
 
                     mView.sendToMain(result);
                     Looper.loop();

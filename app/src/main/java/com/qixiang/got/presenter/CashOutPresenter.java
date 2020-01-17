@@ -43,7 +43,7 @@ public class CashOutPresenter implements CashOutContract.Presenter {
                     }catch (Exception e){
                         e.printStackTrace();
                     }
-                    JSONObject jsb = sendJsonPost("http://112.126.60.140:8080/task/getDrawings",jsonObject);
+                    JSONObject jsb = sendJsonPost("http://112.126.60.140:6789/task/getDrawings",jsonObject);
 
                     mView.sendToMain(jsb);
                     Looper.loop();

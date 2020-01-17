@@ -48,12 +48,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
             @Override
             public void onClick(View v) {
 
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-
-                    }
-                }).start();
             if(TextUtils.isEmpty(etUserName.getText().toString().trim()) || TextUtils.isEmpty(etPsd.getText().toString().trim())){
                ToastUtil.showMessage(getResources().getString(R.string.warn_login));
                return;

@@ -1,6 +1,7 @@
 package com.qixiang.got.fragment;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -20,7 +21,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.qixiang.got.R;
 import com.qixiang.got.ViewAdapter.MultipleMissionAdapter;
 import com.qixiang.got.ViewAdapter.MyViewPager;
+import com.qixiang.got.WebActivity;
+import com.qixiang.got.constant.ConstantData;
+import com.qixiang.got.contract.MultipleMissionContract;
 import com.qixiang.got.model.MultipleMissionInfo;
+import com.qixiang.got.model.MultipleMissionInfo;
+import com.qixiang.got.presenter.MultipleMissionPresenter;
+import com.qixiang.got.utils.ToastUtil;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,12 +41,14 @@ import java.util.List;
  * Created by Administrator on 2018/7/19.
  */
 
-public class MultipleMissionlFragment extends Fragment {
+public class MultipleMissionlFragment extends Fragment implements MultipleMissionContract.View {
     View mView;
 
     public Activity context1;
     public Handler theHandler;
     private MyViewPager myViewPager;
+    List<MultipleMissionInfo> cList = new ArrayList<MultipleMissionInfo>();
+
     public MultipleMissionlFragment(MyViewPager mp){
         myViewPager = mp;
     }
@@ -63,6 +75,7 @@ public class MultipleMissionlFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
+    MultipleMissionAdapter newsAdapter;
     void initView(){
         //LinearLayoutManager是用来做列表布局，也就是单列的列表
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context1);
@@ -84,34 +97,31 @@ public class MultipleMissionlFragment extends Fragment {
         rv.setHasFixedSize(true);
 
         //模拟列表数据
-        List newsList = new ArrayList<>();
-        newsList.add(new MultipleMissionInfo("微赚"));
-        newsList.add(new MultipleMissionInfo("聊天"));
-        newsList.add(new MultipleMissionInfo("刷视频"));
-        newsList.add(new MultipleMissionInfo("看小说"));
-        newsList.add(new MultipleMissionInfo("看文章"));
-        newsList.add(new MultipleMissionInfo("投票"));
-        newsList.add(new MultipleMissionInfo("批改作业"));
-        newsList.add(new MultipleMissionInfo("HH 佣金系统"));
+        //cList.add(new MultipleMissionInfo("微赚22",1,"Nihaohao"));
 
         //设置适配器
-        MultipleMissionAdapter newsAdapter = new MultipleMissionAdapter(newsList,context1);
+        newsAdapter = new MultipleMissionAdapter(cList,context1);
         newsAdapter.setOnItemClick(new MultipleMissionAdapter.OnItemClickListerner() {
             @Override
             public void onItemClick(int position) {
                 Toast.makeText(getContext(), "未开发"+position, Toast.LENGTH_SHORT).show();
-                if(myViewPager != null){
-                    switch (position){
-//                        case 0:
-//                            if(myViewPager.getChildCount()>2)
-//                                myViewPager.setCurrentItem(2);
-//                            break;
-//
+                if(myViewPager != null && cList != null){
+                    if(position < cList.size()){
+                        //String d = cList.get(position).getTaskDesc();
+                        int h = 4;
+                        Intent intent = new Intent(getContext(), WebActivity.class);
+                        startActivity(intent);
+                    }else
+                    {
+
                     }
                 }
             }
         });
         rv.setAdapter(newsAdapter);
+
+        MultipleMissionPresenter mmp = new MultipleMissionPresenter(this);
+        mmp.getMsg();
     }
     @Override
     public void onAttach(Activity context) {
@@ -126,7 +136,48 @@ public class MultipleMissionlFragment extends Fragment {
         //避免重复添加item
         super.onResume();
     }
+    JSONObject jb;
+    @Override
+    public void sendToMain(JSONObject jb1) {
+        jb = jb1;
+        context1.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    int rtnCode = jb.getInt("rtnCode");
+                    if (ConstantData.rtnCodeOK == rtnCode) {
+                        String data = jb.getString("data");
+                        JSONObject jsbData = new JSONObject(data);
+                        JSONArray jsonArray = jsbData.getJSONArray("beans");
 
+                        for (int i = 0;i<jsonArray.length();i++){
+                            jsbData = (JSONObject)jsonArray.get(i);
+                            MultipleMissionInfo chf = new MultipleMissionInfo(jsbData.getString("rowId"),jsbData.getString("taskName"),jsbData.getInt("state"),jsbData.getString("taskDesc"));
+                            cList.add(chf);
+                        }
+
+                        newsAdapter.notifyDataSetChanged();
+
+                    } else {
+                        ToastUtil.showMessage("" + jb.getString("rtnMsg"));
+                    }
+                } catch (Exception e) {
+                    ToastUtil.showMessage("" + e.getMessage());
+                }
+            }
+        });
+
+    }
+
+    @Override
+    public void setPresenter(MultipleMissionContract.Presenter presenter) {
+
+    }
+
+    @Override
+    public void showToast(String msg) {
+
+    }
 }
 
 

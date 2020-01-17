@@ -3,11 +3,12 @@ package com.qixiang.got.presenter;
 import android.os.Looper;
 
 import com.qixiang.got.constant.ConstantData;
-import com.qixiang.got.contract.CashOutHistoryContract;
+import com.qixiang.got.contract.MultipleMissionContract;
+import com.qixiang.got.utils.httputils.Constant;
 
 import org.json.JSONObject;
 
-import static com.qixiang.got.utils.httputils.HttpUtils2.sendJsonPost;
+import static com.qixiang.got.utils.httputils.HttpUtils2.sendMsgGet;
 //import com.qixiang.got.utils.httputils.HttpUtils;
 //import com.qixiang.got.utils.httputils.callback.CommCallback;
 
@@ -15,19 +16,17 @@ import static com.qixiang.got.utils.httputils.HttpUtils2.sendJsonPost;
  * created by jinjianan
  * on 20191224
  */
-public class CashOutHistoryPresenter implements CashOutHistoryContract.Presenter {
-    private CashOutHistoryContract.View mView;
+public class MultipleMissionPresenter implements MultipleMissionContract.Presenter {
+    private MultipleMissionContract.View mView;
 
-    private String balance;
     public String userName="",psd="";
-    public CashOutHistoryPresenter(CashOutHistoryContract.View view) {
+    public MultipleMissionPresenter(MultipleMissionContract.View view) {
         this.mView = view;
         mView.setPresenter(this);
     }
 
     @Override
-    public void getMsg(String balance1) {
-        this.balance = balance1;
+    public void getMsg() {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -35,12 +34,13 @@ public class CashOutHistoryPresenter implements CashOutHistoryContract.Presenter
                     Looper.prepare();
                     JSONObject jsonObject = new JSONObject();
                     try {
-                        jsonObject.put("userName", ConstantData.userAccount);
-                        jsonObject.put("state","1");
+                        //jsonObject.put("performer", ConstantData.userAccount);
+                        jsonObject.put("taskType","4");
+                        //jsonObject.put("state","2");
                     }catch (Exception e){
                         e.printStackTrace();
                     }
-                    JSONObject jsb = sendJsonPost("http://112.126.60.140:6789/task/getDrawingsList",jsonObject);
+                    JSONObject jsb = sendMsgGet("http://112.126.60.140:6789/task/getMytask",jsonObject);
 
                     mView.sendToMain(jsb);
                     Looper.loop();

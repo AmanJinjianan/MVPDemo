@@ -43,7 +43,7 @@ public class CodingDetailPresenter implements CodingDetailContract.Presenter {
                     }catch (Exception e){
                         e.printStackTrace();
                     }
-                    JSONObject jsb = sendMsgGet("http://112.126.60.140:8080/task/getTaskByUserName",jsonObject);
+                    JSONObject jsb = sendMsgGet("http://112.126.60.140:6789/task/getTaskByUserName",jsonObject);
                     mView.sendToMain(jsb);
                     Looper.loop();
                 } catch (Exception e) {
@@ -72,7 +72,7 @@ public class CodingDetailPresenter implements CodingDetailContract.Presenter {
                     }catch (Exception e){
                         e.printStackTrace();
                     }
-                    JSONObject jsb = sendJsonPost("http://112.126.60.140:8080/task/saveResult",jsonObject);
+                    JSONObject jsb = sendJsonPost("http://112.126.60.140:6789/task/saveResult",jsonObject);
                     //mView.sendToMain(jsb);
                     Looper.loop();
                 } catch (Exception e) {

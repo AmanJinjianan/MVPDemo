@@ -3,6 +3,7 @@ package com.qixiang.got;
 import android.app.Application;
 import android.content.Context;
 
+import com.qixiang.got.utils.CrashHandler;
 import com.qixiang.got.utils.DeviceInfoUtils;
 
 /**
@@ -18,7 +19,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         context = this;
-
+        CrashHandler.getInstance().init(getApplicationContext());
         //DeviceInfoUtils.init(this);
     }
 

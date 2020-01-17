@@ -30,6 +30,8 @@ import com.qixiang.got.utils.Utils;
 
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 
 //import android.app.Fragment;
@@ -153,9 +155,40 @@ public class ImageUploadFragment extends Fragment implements ImageUploadContract
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         //获取到的图片为uri格式，imageView控件可以设置uri
+        if(null == data)
+            return;
         Uri uri = data.getData();
         Log.e("onActivityResult: ", String.valueOf(uri));
+        try {
+            //byte[] dd = readStream(String.valueOf(uri));
+            byte[] dd = readStream("/storage/emulated/0/DCIM/Camera/IMG_20200115_121903.jpg");
+            ImageUploadPresenter iup = new ImageUploadPresenter(this);
+            iup.getMsg("/storage/emulated/0/DCIM/Camera/IMG_20200115_121903.jpg");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         if (ivMySelect != null)
             ivMySelect.setImageURI(uri);
     }
+
+
+    /**
+     * 照片转byte二进制
+     * @param imagepath 需要转byte的照片路径
+     * @return 已经转成的byte
+     * @throws Exception
+     */
+    public byte[] readStream(String imagepath) throws Exception {
+        FileInputStream fs = new FileInputStream(imagepath);
+        ByteArrayOutputStream outStream = new ByteArrayOutputStream();
+        byte[] buffer = new byte[1024];
+        int len = 0;
+        while (-1 != (len = fs.read(buffer))) {
+            outStream.write(buffer, 0, len);
+        }
+        outStream.close();
+        fs.close();
+        return outStream.toByteArray();
+    }
+
 }

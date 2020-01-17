@@ -45,7 +45,7 @@ public class MyPresenter implements MyContract.Presenter {
                     }catch (Exception e){
                         e.printStackTrace();
                     }
-                    JSONObject jsb = sendMsgGet("http://112.126.60.140:8080/users/getUserInfo",jsonObject);
+                    JSONObject jsb = sendMsgGet("http://112.126.60.140:6789/users/getUserInfo",jsonObject);
 
                     mView.sendToMain(jsb);
                     Looper.loop();

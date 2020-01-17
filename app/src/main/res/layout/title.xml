@@ -2,12 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/titlebar_height"
-    android:background="@color/app_title">
+    android:background="@color/app_root">
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="15dp"
+        android:background="@drawable/ic_writting2"/>
     <TextView
         android:id="@+id/title_left"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_margin="5dp"
+        android:layout_margin="8dp"
         android:gravity="center_vertical"
         android:text="@string/tv_logo"/>
     <TextView

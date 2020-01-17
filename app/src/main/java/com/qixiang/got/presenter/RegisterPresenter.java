@@ -34,9 +34,10 @@ public class RegisterPresenter implements RegisterContract.Presenter {
                     JSONObject object = new JSONObject();
                     object.put("userName", userName);
                     object.put("passWord", psd);
-                    JSONObject result = HttpUtils2.sendJsonPost("http://112.126.60.140:8080/users/toLogin", object);
+                    object.put("state", "1");
+                    JSONObject result = HttpUtils2.sendJsonPost("http://112.126.60.140:6789/users/addUser", object);
 
-                    mView.showToast("LoginLogin");
+                    mView.showToast("Register...");
                     mView.gotoMain(result);
                     Looper.loop();
                 } catch (Exception e) {
